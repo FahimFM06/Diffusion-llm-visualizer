@@ -13,6 +13,7 @@ st.set_page_config(
 )
 
 # Custom CSS for a beautiful, modern layout with responsive card formatting
+# FIXED: Changed unsafe_allowing_html to unsafe_allow_html on line 61
 st.markdown("""
 <style>
     /* Main body changes */
@@ -56,7 +57,7 @@ st.markdown("""
         font-size: 18px;
     }
 </style>
-""", unsafe_allowing_html=True)
+""", unsafe_allow_html=True)
 
 # ==============================================================================
 # SIDEBAR CONTROLS
@@ -168,7 +169,7 @@ else:
                         html_str += f"<span class='token-box revealed-token'>{token}</span>"
                 html_str += "</div>"
                 
-                st.markdown(html_str, unsafe_allowing_html=True)
+                st.markdown(html_str, unsafe_allow_html=True)
                 time.sleep(simulation_speed)
         st.success("✨ Sequence fully denoised in parallel!")
 
@@ -181,7 +182,7 @@ else:
             <div class="step-card">
                 <div class="step-header">⏱️ Step {idx} {"(Pure Latent Noise Block)" if idx == 0 else "(Refining Sub-Sequences)" if idx < len(diffusion_timeline)-1 else "(Final Output Generation)"}</div>
             </div>
-            """, unsafe_allowing_html=True)
+            """, unsafe_allow_html=True)
             
             html_str = "<div>"
             for token in step_seq:
@@ -190,4 +191,4 @@ else:
                 else:
                     html_str += f"<span class='token-box revealed-token'>{token}</span>"
             html_str += "</div><br>"
-            st.markdown(html_str, unsafe_allowing_html=True)
+            st.markdown(html_str, unsafe_allow_html=True)
